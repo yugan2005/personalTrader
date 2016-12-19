@@ -8,6 +8,7 @@ sys.path.append('/Users/yugan/Dropbox/personalTrader')
 
 from dao.datacleaner import clean_yahoo
 from indicators.commonIndicator import get_dwm_ochlmk
+from dao.Const import Const
 
 
 def get_symbols(fpath):
@@ -37,18 +38,12 @@ def init_collection(db, collection_name, record_list, idx_name, unique=True):
 
 
 def main():
-    host = 'localhost'
-    port = 27017
-    db_name = 'personalTrader'
-    symbol_collection_name = 'symbol'
-    symbol_file_path = 'resources/stock_list.txt'
-
-    client = pymongo.MongoClient(host=host, port=port)
-    db = client[db_name]
-    symbol_ls = get_symbols(symbol_file_path)
+    client = pymongo.MongoClient(host=Const.host, port=Const.port)
+    db = client[Const.db_name]
+    symbol_ls = get_symbols(Const.symbol_file_path)
 
     # Only need run this code once to build the symbol collection the 1st time
-    init_collection(db, symbol_collection_name, symbol_ls, 'ncode', True)
+    init_collection(db, Const.symbol_collection_name, symbol_ls, 'ncode', True)
 
     # Only need run this code once to build timeline collections the 1st time
     invalid_ncode = []
@@ -64,8 +59,8 @@ def main():
             init_collection(db, ncode, dwm_ochlmk.to_dict('records'), 'Date_d', True)
             first_date = db[ncode].find_one(sort=[('Date_d', pymongo.ASCENDING)])['Date_d']
             last_date = db[ncode].find_one(sort=[('Date_d', pymongo.DESCENDING)])['Date_d']
-            db[symbol_collection_name].update({'ncode': ncode}, {'$set': {'from': first_date,
-                                                                          'to': last_date}})
+            db[Const.symbol_collection_name].update({'ncode': ncode}, {'$set': {'from': first_date,
+                                                                                'to': last_date}})
             progress += 1
             if (progress % 10 == 0):
                 print 'Finished {0:.2f}%'.format(float(progress) / len(symbol_ls) * 100)
@@ -75,7 +70,7 @@ def main():
             invalid_ncode.append(ncode)
 
     if invalid_ncode:
-        delete_res = db[symbol_collection_name].delete_many({'ncode': {'$in': invalid_ncode}})
+        delete_res = db[Const.symbol_collection_name].delete_many({'ncode': {'$in': invalid_ncode}})
         print '# of invalid symbol: %d' % len(invalid_ncode)
         print '# of document removed: %d' % delete_res.deleted_count
 
