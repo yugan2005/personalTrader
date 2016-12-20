@@ -117,17 +117,32 @@ def update_db_new_indicators():
         if (processed_cnt % 50 == 0):
             print 'Finished {0:.2f}%'.format(float(processed_cnt) / total_cnt * 100)
 
+def update_one_ncode(ncode):
+    client = pymongo.MongoClient(host=Const.host, port=Const.port)
+    db = client[Const.db_name]
+    db.drop_collection(ncode)
+    timeline = web.DataReader(ncode, 'yahoo', start='1990-01-01')
+    timeline = clean_yahoo(timeline)
+    timeline = timeline.drop('Adj Close', axis=1)
+    dwm_ochlmk = get_dwm_ochlmk(timeline).reset_index(drop=True)
+    init_collection(db, ncode, dwm_ochlmk.to_dict('records'), 'Date_d', True)
+    first_date = db[ncode].find_one(sort=[('Date_d', pymongo.ASCENDING)])['Date_d']
+    last_date = db[ncode].find_one(sort=[('Date_d', pymongo.DESCENDING)])['Date_d']
+    db[Const.symbol_collection_name].update({'ncode': ncode}, {'$set': {'from': first_date,
+                                                                        'to': last_date}})
 
 def main():
-    update_symbol_file()
-    from datetime import datetime
-    start_time = datetime.now()
+    # update_symbol_file()
+    # from datetime import datetime
+    # start_time = datetime.now()
     # build_db_frist_run()
     # build_end_time = datetime.now()
     # print 'build took time: {0:.2f} minutes'.format((build_end_time - start_time).total_seconds() / float(60))
-    update_db_new_indicators()
-    update_end_time = datetime.now()
-    print 'update took time: {0:.2f} minutes'.format((update_end_time - start_time).total_seconds() / float(60))
+    # update_db_new_indicators()
+    # update_end_time = datetime.now()
+    # print 'update took time: {0:.2f} minutes'.format((update_end_time - start_time).total_seconds() / float(60))
+
+    update_one_ncode('002514.SZ')
 
 
 if __name__ == '__main__':

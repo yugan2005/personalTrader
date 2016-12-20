@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1aafbad3-fc0d-4b63-9f34-dce4aaf0fa9a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/strategies/Buyer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/strategies/Seller.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nohup" afterPath="$PROJECT_DIR$/nohup" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backtesting/test.py" afterPath="$PROJECT_DIR$/backtesting/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/Const.py" afterPath="$PROJECT_DIR$/dao/Const.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/builddb.py" afterPath="$PROJECT_DIR$/dao/builddb.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/getdata.py" afterPath="$PROJECT_DIR$/dao/getdata.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indicators/commonIndicator.py" afterPath="$PROJECT_DIR$/indicators/commonIndicator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nohup" afterPath="$PROJECT_DIR$/nohup" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/stock_list.txt" afterPath="$PROJECT_DIR$/resources/stock_list.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,11 +22,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="builddb.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="builddb.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/dao/builddb.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="365">
-                  <caret line="117" column="84" lean-forward="true" selection-start-line="117" selection-start-column="12" selection-end-line="117" selection-end-column="84" />
+                <state relative-caret-position="1104">
+                  <caret line="146" column="0" lean-forward="true" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
                   <folding>
                     <element signature="e#25#39#0" expanded="true" />
                   </folding>
@@ -70,7 +64,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Seller.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Seller.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/strategies/Seller.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="336">
@@ -119,8 +113,8 @@
           <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/backtesting/test.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="915">
-                  <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+                <state relative-caret-position="1167">
+                  <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#27#0" expanded="true" />
                   </folding>
@@ -164,6 +158,11 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Yu Gan &lt;yugan2005@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -172,12 +171,12 @@
         <option value="$PROJECT_DIR$/dao/datacleaner.py" />
         <option value="$PROJECT_DIR$/dao/utilities.py" />
         <option value="$PROJECT_DIR$/strategies/SellerBase.py" />
-        <option value="$PROJECT_DIR$/dao/builddb.py" />
         <option value="$PROJECT_DIR$/indicators/commonIndicator.py" />
         <option value="$PROJECT_DIR$/strategies/Seller.py" />
         <option value="$PROJECT_DIR$/dao/Const.py" />
         <option value="$PROJECT_DIR$/dao/getdata.py" />
         <option value="$PROJECT_DIR$/strategies/Buyer.py" />
+        <option value="$PROJECT_DIR$/dao/builddb.py" />
         <option value="$PROJECT_DIR$/backtesting/test.py" />
       </list>
     </option>
@@ -564,6 +563,14 @@
       <option name="presentableId" value="Default" />
       <updated>1482101380231</updated>
     </task>
+    <task id="LOCAL-00001" summary="Implemented a ideal strategy and one custom strategy. Tested. Still has a unicode bug">
+      <created>1482191738535</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1482191738535</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -590,8 +597,30 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implemented a ideal strategy and one custom strategy. Tested. Still has a unicode bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented a ideal strategy and one custom strategy. Tested. Still has a unicode bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -807,16 +836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/builddb.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="709">
-          <caret line="82" column="22" lean-forward="false" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="22" />
-          <folding>
-            <element signature="e#25#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/strategies/Buyer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
@@ -843,10 +862,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dao/builddb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="709">
+          <caret line="82" column="22" lean-forward="false" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="22" />
+          <folding>
+            <element signature="e#25#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/backtesting/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        <state relative-caret-position="1167">
+          <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>

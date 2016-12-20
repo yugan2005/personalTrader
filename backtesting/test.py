@@ -1,6 +1,7 @@
 from dao.Const import Const
 from dao import getdata as gd
 import numpy as np
+import pandas as pd
 
 
 def single_stock_maxsize(df, buyer_class, seller_class, base_period='d', initial_fund=Const.default_init_fund, **kwargs):
@@ -65,13 +66,15 @@ def test_all(buyer_class, seller_class, base_period='d', test_ratio=1, initial_f
         try:
             df = gd.hist_by_num(ncode)
         except Exception:
-            print ncode
+            print '!!database corrupted!! check {}'.format(ncode)
             continue
         final_fund = single_stock_maxsize(df, buyer_class, seller_class, base_period, initial_fund, **kwargs)
-        profit = final_fund - initial_fund
+        profit = dict()
+        profit['ncode'] = ncode
+        profit['profit'] = final_fund - initial_fund
         profits.append(profit)
 
-    return np.array(profits).mean()
+    return pd.DataFrame(profits)
 
 
 def main():
@@ -79,7 +82,8 @@ def main():
     from strategies.Seller import DadSeller_1
     # df = gd.hist_by_num('600839.SS')
     # print single_stock_maxsize(df, DadBuyer_1, DadSeller_1, base_period='w')
-    print test_all(DadBuyer_1, DadSeller_1, base_period='w', test_ratio=1, MA5_p=0.99)
+    profits = test_all(DadBuyer_1, DadSeller_1, base_period='w', test_ratio=0.1, MA5_p=0.99)
+    print profits.describe()
 
 
 if __name__ == '__main__':
