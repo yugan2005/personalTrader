@@ -27,15 +27,16 @@ def MA(df, window_size):
             .to_frame(name='MA_' + str(window_size)))
 
 
-def get_dwm_ochlmk(cleaned_daily_df):
-    days = cleaned_daily_df.reset_index()[['Date']].set_index('Date', drop=False)
+def get_dwm_ochlmk(tdx_df):
+    daily = tdx_df.copy()
+    days = daily.reset_index()[['Date']].set_index('Date', drop=False)
     month_last = days.to_period('M').groupby(level=0).last()
     week_last = days.to_period('W').groupby(level=0).last()
-    monthly = cleaned_daily_df.resample('M').agg(
-        {'Open': 'first', 'Close': 'last', 'High': 'max', 'Low': 'min', 'Volume': 'sum'}).dropna()
+    monthly = daily.resample('M').agg(
+        {'Open': 'first', 'Close': 'last', 'High': 'max', 'Low': 'min', 'Volume': 'sum', 'Amount': 'sum'}).dropna()
     monthly.index = month_last['Date']
-    weekly = cleaned_daily_df.resample('W').agg(
-        {'Open': 'first', 'Close': 'last', 'High': 'max', 'Low': 'min', 'Volume': 'sum'}).dropna()
+    weekly = daily.resample('W').agg(
+        {'Open': 'first', 'Close': 'last', 'High': 'max', 'Low': 'min', 'Volume': 'sum', 'Amount': 'sum'}).dropna()
     weekly.index = week_last['Date']
 
     monthly.loc[:, 'MACD'] = MACD(monthly.Close)['MACD']
@@ -44,30 +45,23 @@ def get_dwm_ochlmk(cleaned_daily_df):
     weekly.loc[:, 'MACD'] = MACD(weekly.Close)['MACD']
     weekly.loc[:, 'MA_5'] = MA(weekly.Close, 5)['MA_5']
     weekly.loc[:, 'MA_2'] = MA(weekly.Close, 2)['MA_2']
-    cleaned_daily_df.loc[:, 'MACD'] = MACD(cleaned_daily_df.Close)['MACD']
-    cleaned_daily_df.loc[:, 'MA_5'] = MA(cleaned_daily_df.Close, 5)['MA_5']
-    cleaned_daily_df.loc[:, 'MA_2'] = MA(cleaned_daily_df.Close, 2)['MA_2']
+    daily.loc[:, 'MACD'] = MACD(daily.Close)['MACD']
+    daily.loc[:, 'MA_5'] = MA(daily.Close, 5)['MA_5']
+    daily.loc[:, 'MA_2'] = MA(daily.Close, 2)['MA_2']
 
     monthly.loc[:, 'K'], monthly.loc[:, 'D'], monthly.loc[:, 'J'] = KDJ(monthly)
     weekly.loc[:, 'K'], weekly.loc[:, 'D'], weekly.loc[:, 'J'] = KDJ(weekly)
-    cleaned_daily_df.loc[:, 'K'], cleaned_daily_df.loc[:, 'D'], cleaned_daily_df.loc[:, 'J'] = KDJ(cleaned_daily_df)
+    daily.loc[:, 'K'], daily.loc[:, 'D'], daily.loc[:, 'J'] = KDJ(daily)
 
-    cleaned_daily_df.loc[:, 'Date'] = cleaned_daily_df.index
+    daily.loc[:, 'Date'] = daily.index
     weekly.loc[:, 'Date'] = weekly.index
     monthly.loc[:, 'Date'] = monthly.index
-    month_to_daily = monthly.reindex(cleaned_daily_df.index, method='ffill')
-    week_to_daily = weekly.reindex(cleaned_daily_df.index, method='ffill')
+    month_to_daily = monthly.reindex(daily.index, method='ffill')
+    week_to_daily = weekly.reindex(daily.index, method='ffill')
 
-    dwm_ochl_macd_kdj = (
-        cleaned_daily_df[['Date', 'High', 'Close', 'Open', 'Low', 'MACD', 'K', 'D', 'J', 'MA_5', 'MA_2', 'Volume']]
-            .join(week_to_daily, lsuffix='_d', rsuffix='_w'))
-    dwm_ochl_macd_kdj = (dwm_ochl_macd_kdj.join(month_to_daily)
-                         .rename(columns=
-                                 {'High': 'High_m', 'Close': 'Close_m', 'Open': 'Open_m',
-                                  'Low': 'Low_m', 'MACD': 'MACD_m', 'Date': 'Date_m',
-                                  'K': 'K_m', 'D': 'D_m', 'J': 'J_m',
-                                  'MA_5': 'MA_5_m', 'MA_2': 'MA_2_m', 'Volume': 'Volume_m', 'Date': 'Date_m'}))
-
+    dwm_ochl_macd_kdj = daily.join(week_to_daily, lsuffix='_d', rsuffix='_w')
+    month_to_daily.columns = month_to_daily.columns.map(lambda name: name+'_m')
+    dwm_ochl_macd_kdj = dwm_ochl_macd_kdj.join(month_to_daily)
     dwm_ochl_macd_kdj = dwm_ochl_macd_kdj.dropna()
 
     dwm_ochl_macd_kdj.loc[:, 'grp_d'] = (dwm_ochl_macd_kdj.MACD_d * dwm_ochl_macd_kdj.MACD_d.shift() < 0).cumsum()
@@ -79,25 +73,13 @@ def get_dwm_ochlmk(cleaned_daily_df):
     return dwm_ochl_macd_kdj
 
 
-def get_cleaned_daily_df(dwm_ochlmk_df):
-    cleaned = (dwm_ochlmk_df[['Date_d', 'High_d', 'Low_d', 'Close_d', 'Open_d', 'Volume_d']]
-               .rename(columns=lambda x: x[:-2])
-               .reset_index(drop=True)
-               .set_index('Date', drop=True))
-
-    return cleaned
-
 
 def main():
-    import pandas_datareader.data as web
-    from dao.datacleaner import clean_yahoo
-    timeline = web.DataReader('601099.SS', 'yahoo', start='1990-01-01')
-    timeline = clean_yahoo(timeline)
-    timeline = timeline.drop('Adj Close', axis=1)
-    dwm_ochlmk = get_dwm_ochlmk(timeline)
-    print dwm_ochlmk
-    print '---'
-    print get_cleaned_daily_df(dwm_ochlmk)
+    from dao import fromTDX
+    stock_info = fromTDX.get_stock_info()
+    tdx_df = fromTDX.get_stock(stock_info.loc['600033', 'TDXname'], 'bfq')
+    df = get_dwm_ochlmk(tdx_df)
+    print df.head()
 
 
 if __name__ == '__main__':

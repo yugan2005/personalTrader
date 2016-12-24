@@ -1,4 +1,5 @@
 from abc import abstractmethod, ABCMeta
+import pandas as pd
 
 
 class BuyerBase:
@@ -44,7 +45,7 @@ class DadBuyer_1(BuyerBase):
         cond = cond_1 & cond_2
 
         if ~(cond.any()):
-            return
+            return pd.DataFrame() # return None may cause issues for the groupby().apply() action
         return grp[cond]
 
     def buy_or_not(self, cur_date):
