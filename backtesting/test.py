@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
 import sys, os
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+try:
+    from backtesting.recorder import SingleStockTestRecorder, MultiStockTestRecorder
+    from dao.Const import Const
+    from dao import fromDB
+except Exception:
+    sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+    from backtesting.recorder import SingleStockTestRecorder, MultiStockTestRecorder
+    from dao.Const import Const
+    from dao import fromDB
 
-from backtesting.recorder import SingleStockTestRecorder, MultiStockTestRecorder
-from dao.Const import Const
-from dao import fromDB
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -59,7 +64,7 @@ def test_all(buyer_class, seller_class,
              initial_fund=Const.default_init_fund, **kwargs):
     multi_records = MultiStockTestRecorder()
     cnt = 0
-    stock_info = fromDB.get_stock_info()
+    stock_info = fromDB.get_all_stock_info()
     codes = stock_info.code.values
     codes = np.random.permutation(codes)
     tot_cnt = len(codes)
@@ -122,7 +127,6 @@ def main():
     print records.get_profit_stats()
 
     worst_code, worst_record = records.get_worst_case()
-
 
     Dad_strategy_1_plot(worst_code, worst_record)
 

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from dao.Const import Const
 import pandas as pd
 from matplotlib import pyplot as plt

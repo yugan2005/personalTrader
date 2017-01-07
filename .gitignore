@@ -90,3 +90,6 @@ ENV/
 
 # Personal key files
 .key
+/dao/tk.csv
+/resources/tk.csv
+/resources/tk.key

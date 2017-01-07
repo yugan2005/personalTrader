@@ -1,7 +1,17 @@
+# -*- coding: utf-8 -*-
+
 import pandas as pd
 
 
 def MACD(df, slow_period=26, fast_period=12, dif_period=9):
+    """
+    KDJ in TDX has min_periods = 0 in the rolling for initial stage
+    :param df:
+    :param slow_period:
+    :param fast_period:
+    :param dif_period:
+    :return:
+    """
     slow_EMA = df.ewm(span=slow_period, min_periods=0, adjust=False).mean()
     fast_EMA = df.ewm(span=fast_period, min_periods=0, adjust=False).mean()
     dif = fast_EMA - slow_EMA
@@ -11,6 +21,14 @@ def MACD(df, slow_period=26, fast_period=12, dif_period=9):
 
 
 def KDJ(df, N=9, M1=3, M2=3):
+    """
+    KDJ in TDX has min_periods = 0 in the rolling for initial stage
+    :param df:
+    :param N:
+    :param M1:
+    :param M2:
+    :return:
+    """
     RSV = ((df.Close - df.Low.rolling(N, min_periods=0).min())
            / (df.High.rolling(N, min_periods=0).max() - df.Low.rolling(N, min_periods=0).min()) * 100)
     RSV_s = pd.Series(RSV, index=df.index)
@@ -21,8 +39,14 @@ def KDJ(df, N=9, M1=3, M2=3):
 
 
 def MA(df, window_size):
+    """
+    MA in TDX has NA in the initial stage
+    :param df:
+    :param window_size:
+    :return:
+    """
     return (df
-            .rolling(window_size, min_periods=0)
+            .rolling(window_size)
             .mean()
             .to_frame(name='MA_' + str(window_size)))
 
@@ -40,12 +64,18 @@ def get_dwm_ochlmk(tdx_df):
     weekly.index = week_last['Date']
 
     monthly.loc[:, 'MACD'] = MACD(monthly.Close)['MACD']
+    monthly.loc[:, 'MA_20'] = MA(monthly.Close, 20)['MA_20']
+    monthly.loc[:, 'MA_10'] = MA(monthly.Close, 10)['MA_10']
     monthly.loc[:, 'MA_5'] = MA(monthly.Close, 5)['MA_5']
     monthly.loc[:, 'MA_2'] = MA(monthly.Close, 2)['MA_2']
     weekly.loc[:, 'MACD'] = MACD(weekly.Close)['MACD']
+    weekly.loc[:, 'MA_20'] = MA(weekly.Close, 20)['MA_20']
+    weekly.loc[:, 'MA_10'] = MA(weekly.Close, 10)['MA_10']
     weekly.loc[:, 'MA_5'] = MA(weekly.Close, 5)['MA_5']
     weekly.loc[:, 'MA_2'] = MA(weekly.Close, 2)['MA_2']
     daily.loc[:, 'MACD'] = MACD(daily.Close)['MACD']
+    daily.loc[:, 'MA_20'] = MA(daily.Close, 20)['MA_20']
+    daily.loc[:, 'MA_10'] = MA(daily.Close, 10)['MA_10']
     daily.loc[:, 'MA_5'] = MA(daily.Close, 5)['MA_5']
     daily.loc[:, 'MA_2'] = MA(daily.Close, 2)['MA_2']
 
@@ -60,9 +90,10 @@ def get_dwm_ochlmk(tdx_df):
     week_to_daily = weekly.reindex(daily.index, method='ffill')
 
     dwm_ochl_macd_kdj = daily.join(week_to_daily, lsuffix='_d', rsuffix='_w')
-    month_to_daily.columns = month_to_daily.columns.map(lambda name: name+'_m')
+    month_to_daily.columns = month_to_daily.columns.map(lambda name: name + '_m')
     dwm_ochl_macd_kdj = dwm_ochl_macd_kdj.join(month_to_daily)
-    dwm_ochl_macd_kdj = dwm_ochl_macd_kdj.dropna()
+    # MA_2 and MA_5 NaN values are valid and should be kept.
+    dwm_ochl_macd_kdj = dwm_ochl_macd_kdj.dropna(subset=['MACD_d', 'MACD_w', 'MACD_m'])
 
     dwm_ochl_macd_kdj.loc[:, 'grp_d'] = (dwm_ochl_macd_kdj.MACD_d * dwm_ochl_macd_kdj.MACD_d.shift() < 0).cumsum()
     dwm_ochl_macd_kdj.loc[:, 'm_neg_d'] = (dwm_ochl_macd_kdj.MACD_d < 0)
@@ -73,10 +104,9 @@ def get_dwm_ochlmk(tdx_df):
     return dwm_ochl_macd_kdj
 
 
-
 def main():
     from dao import fromTDX
-    stock_info = fromTDX.get_stock_info()
+    stock_info = fromTDX.get_all_stock_info()
     tdx_df = fromTDX.get_stock(stock_info.loc['600033', 'TDXname'], 'bfq')
     df = get_dwm_ochlmk(tdx_df)
     print df.head()
