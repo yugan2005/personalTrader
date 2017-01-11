@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
-import sys, os
+import os
+import sys
 
 try:
     from backtesting.recorder import SingleStockTestRecorder, MultiStockTestRecorder
-    from dao.Const import Const
-    from dao import fromDB
+    from dao.constant import DaoConstant
+    from nouse import fromDB
 except Exception:
     sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
     from backtesting.recorder import SingleStockTestRecorder, MultiStockTestRecorder
-    from dao.Const import Const
+    from dao.constant import DaoConstant
     from dao import fromDB
 
 import numpy as np
@@ -16,7 +17,7 @@ from matplotlib import pyplot as plt
 
 
 def single_stock_maxsize(df, buyer_class, seller_class,
-                         base_period='d', initial_fund=Const.default_init_fund, **kwargs):
+                         base_period='d', initial_fund=DaoConstant.default_init_fund, **kwargs):
     has_buy = False
     buy_price = 0.0
     buy_size = 0
@@ -61,7 +62,7 @@ def single_stock_maxsize(df, buyer_class, seller_class,
 
 def test_all(buyer_class, seller_class,
              fq='qfq', base_period='d', test_ratio=1.0,
-             initial_fund=Const.default_init_fund, **kwargs):
+             initial_fund=DaoConstant.default_init_fund, **kwargs):
     multi_records = MultiStockTestRecorder()
     cnt = 0
     stock_info = fromDB.get_all_stock_info()
@@ -116,8 +117,8 @@ def Dad_strategy_1_plot(record_code, record):
 
 
 def main():
-    from strategies.Buyer import DadBuyer_1
-    from strategies.Seller import DadSeller_1
+    from personalTrader.strategies import DadBuyer_1
+    from personalTrader.strategies import DadSeller_1
 
     # worst_code = '002411'
     # df = fromDB.get_stock(worst_code, 'qfq')

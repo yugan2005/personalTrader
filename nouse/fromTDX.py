@@ -3,7 +3,7 @@
 import pandas as pd
 import tushare as ts
 from datetime import datetime
-from Const import Const
+from dao.constant import DaoConstant
 import os
 
 package_directory = os.path.dirname(os.path.abspath(__file__))
@@ -13,14 +13,14 @@ with open(os.path.join(package_directory, '../resources/tk.key'), 'r') as f:
 
 
 def get_all_stock_info():
-    file_path = os.path.join(Const.tdx_base_path1, 'qfq')
+    file_path = os.path.join(DaoConstant.tdx_base_path1, 'qfq')
     ncodes = []
     for filename in os.listdir(file_path):
-        if filename[0] != '.' and os.path.getsize(os.path.join(file_path, filename)) != Const.tdx_empty_file_size:
+        if filename[0] != '.' and os.path.getsize(os.path.join(file_path, filename)) != DaoConstant.tdx_empty_file_size:
             record = dict()
             tdx_prefix = filename.strip().split('#')[0].strip()
             code = filename.strip().split('#')[1].split('.')[0].strip()
-            yahoo_suffix = Const.y_t_map.get(tdx_prefix, tdx_prefix)
+            yahoo_suffix = DaoConstant.y_t_map.get(tdx_prefix, tdx_prefix)
             ncode = code + '.' + yahoo_suffix
             record['code'] = code.encode('utf8')
             record['ncode'] = ncode.encode('utf8')
@@ -42,13 +42,13 @@ def get_stock(TDXname, fq):
     :param fq: ['qfq'|'bfq']
     :return: dataframe with index of 'Date' and columns of ['Open', 'High', 'Low', 'Close', 'Volume', 'Amount'], or None
     """
-    file_path = os.path.join(Const.tdx_base_path1, fq, TDXname)
-    file_path2 = os.path.join(Const.tdx_base_path2, fq, TDXname)
-    df = (pd.read_csv(file_path, names=Const.tdx_csv_schema, header=None, skipfooter=1, parse_dates=[0],
+    file_path = os.path.join(DaoConstant.tdx_base_path1, fq, TDXname)
+    file_path2 = os.path.join(DaoConstant.tdx_base_path2, fq, TDXname)
+    df = (pd.read_csv(file_path, names=DaoConstant.tdx_csv_schema, header=None, skipfooter=1, parse_dates=[0],
                       infer_datetime_format=True, engine='python')
           .set_index('Date'))
     if df.index.duplicated().sum() != 0:
-        df = (pd.read_csv(file_path2, names=Const.tdx_csv_schema, header=None, skipfooter=1, parse_dates=[0],
+        df = (pd.read_csv(file_path2, names=DaoConstant.tdx_csv_schema, header=None, skipfooter=1, parse_dates=[0],
                           infer_datetime_format=True, engine='python')
               .set_index('Date'))
     # There are corrupted data with Volume == 0, which should be removed
@@ -63,8 +63,8 @@ def check_data():
        The version from Dad's machine has issue for SH 2014-02-10. Combine this two version seems okay now.
        :return: bad_files
     """
-    base_path = Const.tdx_base_path1
-    base_path2 = Const.tdx_base_path2
+    base_path = DaoConstant.tdx_base_path1
+    base_path2 = DaoConstant.tdx_base_path2
     bad_files = []
     tot_cnt = len(os.listdir(os.path.join(base_path, 'qfq'))) * 2
     cnt = 0
@@ -72,14 +72,14 @@ def check_data():
     for fq in ['qfq', 'bfq']:
         file_folder = os.path.join(base_path, fq)
         for filename in os.listdir(file_folder):
-            if filename[0] != '.' and os.path.getsize(os.path.join(file_folder, filename)) != Const.tdx_empty_file_size:
+            if filename[0] != '.' and os.path.getsize(os.path.join(file_folder, filename)) != DaoConstant.tdx_empty_file_size:
                 file_path = os.path.join(base_path, fq, filename)
-                df = (pd.read_csv(file_path, names=Const.tdx_csv_schema, header=None, skipfooter=1, parse_dates=[0],
+                df = (pd.read_csv(file_path, names=DaoConstant.tdx_csv_schema, header=None, skipfooter=1, parse_dates=[0],
                                   infer_datetime_format=True, engine='python')
                       .set_index('Date'))
                 if df.index.duplicated().sum() != 0:
                     file_path2 = os.path.join(base_path2, fq, filename)
-                    df2 = (pd.read_csv(file_path2, names=Const.tdx_csv_schema, header=None,
+                    df2 = (pd.read_csv(file_path2, names=DaoConstant.tdx_csv_schema, header=None,
                                        skipfooter=1, parse_dates=[0],
                                        infer_datetime_format=True, engine='python').set_index('Date'))
                     if df2.index.duplicated().sum() != 0:

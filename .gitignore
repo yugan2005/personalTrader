@@ -91,5 +91,8 @@ ENV/
 # Personal key files
 .key
 /dao/tk.csv
-/resources/tk.csv
-/resources/tk.key
+/personalTrader/resources/tk.csv
+/personalTrader/resources/tk.key
+/personalTrader/dao/phantomjsdriver.log
+/personalTrader/dao/selenium_server_log.log
+/personalTrader/dao/selenium_server_log.log.lck

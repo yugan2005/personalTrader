@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from dao.Const import Const
+from dao.constant import DaoConstant
 import pandas as pd
 from matplotlib import pyplot as plt
 from matplotlib.gridspec import GridSpec
@@ -8,7 +8,7 @@ import numpy as np
 
 
 class SingleStockTestRecorder(object):
-    def __init__(self, df, base_period='d', initial_fund=Const.default_init_fund):
+    def __init__(self, df, base_period='d', initial_fund=DaoConstant.default_init_fund):
         self.n_loss = 0
         self.n_gain = 0
         self.buy_date = []
@@ -78,5 +78,5 @@ class MultiStockTestRecorder(object):
         for record in self.records:
             single_record = record['record']
             code = record['code']
-            if abs(single_record.get_profit() - self.get_profit_stats().min()) < Const.float_tolerance:
+            if abs(single_record.get_profit() - self.get_profit_stats().min()) < DaoConstant.float_tolerance:
                 return code, single_record

@@ -4,21 +4,15 @@
 
 import subprocess
 import time
-import sys, os
 
 from contextlib import contextmanager
 from selenium import webdriver
 from dateutil import parser as date_parser
-from datetime import datetime
+from datetime import date
 from datetime import timedelta
 
-try:
-    from DatabaseAccessor import DatabaseAccessor
-    from Const import Const
-except Exception:
-    sys.path.append(os.path.join(os.path.dirname(__file__)))
-    from DatabaseAccessor import DatabaseAccessor
-    from Const import Const
+from DatabaseAccessor import DatabaseAccessor
+import constant
 
 
 def multi_get_first(str_input):
@@ -121,7 +115,7 @@ def open_phantomJS_driver():
     capabilities['phantomjs.page.settings.javascriptCanCloseWindows'] = False
     capabilities[
         'phantomjs.page.settings.userAgent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/538.1'
-
+    capabilities['phantomjs.page.settings.resourceTimeout'] = 500
     driver = webdriver.Remote("http://localhost:4444/wd/hub", capabilities)
     yield driver
     driver.quit()
@@ -131,16 +125,17 @@ def start_selenium_server_if_not():
     running = subprocess.check_output('ps -ef | grep selenium | grep -v grep | wc -l', shell=True).strip()
     if running == '0':
         null_io = open('/dev/null')
-        server_proc = subprocess.Popen(['selenium-server', '-port', '4444'], stdout=null_io, stderr=null_io)
+        server_proc = subprocess.Popen(['selenium-server', '-port', '4444', '-log', 'selenium_server_log.log'],
+                                       stdout=null_io, stderr=null_io)
         time.sleep(1)
 
 
-def get_dates(code, data_source, start_date, end_date):
+def get_dates(code, accessor_name, start_date, end_date):
     """
     this method split the date range into two part, internal_start, internal_end, external_start, external_end,
     in order to reduce the dates need be requested from external data source.
     :param code: string number code without pre/suffix, e.g. '600033'
-    :param data_source: string for the external data source, e.g. 'sohu', 'sina' etc
+    :param accessor_name: string for the external data source, e.g. 'sohu', 'sina' etc
     :param start_date: string '%Y-%m-%d' e.g. '2017-01-04'
     :param end_date: string '%Y-%m-%d' e.g. '2017-01-04'
     :return: (i_start, i_end, e_start, e_end) data type are datetime or None
@@ -148,23 +143,23 @@ def get_dates(code, data_source, start_date, end_date):
              if i_end != None, means need read from internal database. But i_start can be None
     """
     db_accessor = DatabaseAccessor()
-    db_checkpoint = db_accessor.get_checkpoints(code, data_source)
+    db_checkpoint = db_accessor.get_checkpoints(code, accessor_name)
     i_start = None
     i_end = None
     e_start = None
     e_end = None
 
     if start_date:
-        start_date = date_parser.parse(start_date)
+        start_date = date_parser.parse(start_date).date()
     else:
-        start_date = Const.default_start_date
+        start_date = constant.default_start_date
 
     if end_date:
-        end_date = date_parser.parse(end_date)
+        end_date = date_parser.parse(end_date).date()
     else:
-        end_date = datetime.today()
+        end_date = date.today()
 
-    if db_checkpoint == Const.default_start_date or start_date > db_checkpoint:
+    if db_checkpoint == constant.default_start_date or start_date > db_checkpoint:
         i_start = None
         i_end = None
         e_start = start_date
@@ -181,6 +176,7 @@ def get_dates(code, data_source, start_date, end_date):
         e_end = end_date
 
     return i_start, i_end, e_start, e_end
+
 
 def main():
     str_input = '欢迎你'

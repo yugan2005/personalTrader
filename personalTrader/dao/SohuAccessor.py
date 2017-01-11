@@ -3,7 +3,6 @@ import json
 import requests
 import pandas as pd
 import re
-import sys, os
 
 from StringIO import StringIO
 from dateutil import parser as date_parser
@@ -11,23 +10,16 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-try:
-    from Dao import Accessor
-    from Const import Const
-    from DatabaseAccessor import DatabaseAccessor
-    import dao_util
-except Exception:
-    sys.path.append(os.path.join(os.path.dirname(__file__)))
-    from Dao import Accessor
-    from Const import Const
-    from DatabaseAccessor import DatabaseAccessor
-    import dao_util
+from abstractAccessor import Accessor
+import constant
+from DatabaseAccessor import DatabaseAccessor
+import utility
 
 
 class SohuAccessor(Accessor):
     def __init__(self):
         self.hq_baseURL = 'http://q.stock.sohu.com/hisHq?&code=cn_{}&start={:%Y%m%d}&end={:%Y%m%d}&t=d&rt=json'
-        self.data_source = 'sohu'
+        self.accessor_name = 'sohu'
         self.fhps_baseURL = 'http://q.stock.sohu.com/cn/{}/fhsp.shtml'
         self.fhps_table_xpath = '/html/body/div[4]/div[2]/div[2]/div[2]/div/div[2]/table'
         self.zg_re = re.compile(ur'转增(\d+)股')
@@ -36,7 +28,7 @@ class SohuAccessor(Accessor):
         self.date_re = re.compile(ur'(\d{4}-\d{2}-\d{2})')
 
     def get_fhps(self, code, start_date=None, end_date=None, retry_times=3):
-        i_start, i_end, e_start, e_end = dao_util.get_dates(code, self.data_source, start_date, end_date)
+        i_start, i_end, e_start, e_end = utility.get_dates(code, self.accessor_name, start_date, end_date)
         e_df = None
         i_df = None
         url = self.fhps_baseURL.format(code)
@@ -45,7 +37,7 @@ class SohuAccessor(Accessor):
 
         if e_start:
             while retry < retry_times:
-                with dao_util.open_phantomJS_driver() as driver:
+                with utility.open_phantomJS_driver() as driver:
                     try:
                         driver.get(url)
                         d_table = WebDriverWait(driver, 30).until(
@@ -79,7 +71,7 @@ class SohuAccessor(Accessor):
                         zg_m = self.zg_re.search(line)
                         sg_m = self.sg_re.search(line)
                         fh_m = self.fh_re.search(line)
-                        record['Date'] = date_parser.parse(date_m.group(1))
+                        record['Date'] = date_parser.parse(date_m.group(1)).date()
                         if zg_m:
                             record['Zg'] = float(zg_m.group(1)) / 10.
                         if sg_m:
@@ -97,7 +89,7 @@ class SohuAccessor(Accessor):
                             e_df.loc[:, field] = 0.0
                     e_df.loc[:, ['Fh', 'Zg', 'Sg']] = e_df.loc[:, ['Fh', 'Zg', 'Sg']].fillna(0.0)
                     e_df.loc[:, 'Ps'] = e_df['Zg'] + e_df['Sg']
-                    e_df = e_df[Const.fhps_col_names].set_index('Date', drop=False).sort_index()
+                    e_df = e_df[constant.fhps_col_names].set_index('Date', drop=False).sort_index()
                     e_df = e_df[e_start:e_end]
         if i_end:
             db_accessor = DatabaseAccessor()
@@ -108,7 +100,7 @@ class SohuAccessor(Accessor):
 
     def get_hq(self, code, start_date=None, end_date=None, retry_times=3):
 
-        i_start, i_end, e_start, e_end = dao_util.get_dates(code, self.data_source, start_date, end_date)
+        i_start, i_end, e_start, e_end = utility.get_dates(code, self.accessor_name, start_date, end_date)
         e_df = None
         i_df = None
 
@@ -126,12 +118,12 @@ class SohuAccessor(Accessor):
                 page_io = StringIO(page)
                 data = json.load(page_io)
                 e_df = pd.DataFrame(data['hq']).iloc[:, [0, 1, 6, 2, 5, 7, 8]]
-                e_df.iloc[:, 0] = pd.to_datetime(e_df.iloc[:, 0], errors='coerce')
+                e_df.iloc[:, 0] = pd.to_datetime(e_df.iloc[:, 0], errors='coerce').dt.date
                 for i in range(1, len(e_df.columns)):
-                    e_df.iloc[:, i] = e_df.iloc[:, i].astype(Const.hq_datatypes[i])
-                e_df.columns = Const.hq_col_names
+                    e_df.iloc[:, i] = e_df.iloc[:, i].astype(constant.hq_datatypes[i])
+                e_df.columns = constant.hq_col_names
                 e_df = e_df.set_index('Date', drop=False).sort_index()
-                e_df = dao_util.clean_hq_df(e_df)
+                e_df = utility.clean_hq_df(e_df)
                 e_df = e_df[e_start:e_end]
 
         if i_end:
@@ -145,13 +137,11 @@ class SohuAccessor(Accessor):
 def main():
     sohuAccessor = SohuAccessor()
     code = '600033'
-    start_date = '2015-01-12'
+    start_date = '2014-01-12'
     end_date = '2016-01-12'
     print sohuAccessor.get_hq(code, start_date, end_date)
     print '---'
     print sohuAccessor.get_fhps(code, start_date, end_date)
-    print '---'
-    print sohuAccessor.get_fhps(code)
 
 
 if __name__ == '__main__':

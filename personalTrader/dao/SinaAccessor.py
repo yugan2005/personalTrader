@@ -1,29 +1,18 @@
 # -*- coding: utf-8 -*-
-import json
 import requests
 import pandas as pd
 import numpy as np
-import re
-import sys, os
 
-from StringIO import StringIO
 from dateutil import parser as date_parser
 from bs4 import BeautifulSoup
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-try:
-    from Dao import Accessor
-    from Const import Const
-    from DatabaseAccessor import DatabaseAccessor
-    import dao_util
-except Exception:
-    sys.path.append(os.path.join(os.path.dirname(__file__)))
-    from Dao import Accessor
-    from Const import Const
-    from DatabaseAccessor import DatabaseAccessor
-    import dao_util
+from abstractAccessor import Accessor
+import constant
+from DatabaseAccessor import DatabaseAccessor
+import utility
 
 
 class SinaAccessor(Accessor):
@@ -32,12 +21,12 @@ class SinaAccessor(Accessor):
         self.hq_fast_baseURL = 'http://biz.finance.sina.com.cn/stock/flash_hq/kline_data.php?symbol={}&begin_date={:%Y%m%d}&end_date={:%Y%m%d}'
         self.hq_table_xpath = '//*[@id="FundHoldSharesTable"]'
         self.hq_year_list_xpath = '//*[@id="con02-4"]/table/tbody/tr/td/form/select[1]'
-        self.data_source = 'sina'
+        self.accessor_name = 'sina'
         self.fhps_baseURL = 'http://vip.stock.finance.sina.com.cn/corp/go.php/vISSUE_ShareBonus/stockid/{}.phtml'
         self.fhps_table_xpath = '//*[@id="sharebonus_1"]'
 
     def get_fhps(self, code, start_date=None, end_date=None, retry_times=3):
-        i_start, i_end, e_start, e_end = dao_util.get_dates(code, self.data_source, start_date, end_date)
+        i_start, i_end, e_start, e_end = utility.get_dates(code, self.accessor_name, start_date, end_date)
         e_df = None
         i_df = None
         url = self.fhps_baseURL.format(code)
@@ -45,7 +34,7 @@ class SinaAccessor(Accessor):
 
         if e_start:
             while retry < retry_times:
-                with dao_util.open_phantomJS_driver() as driver:
+                with utility.open_phantomJS_driver() as driver:
                     try:
                         driver.get(url)
                         d_table = WebDriverWait(driver, 30).until(
@@ -57,9 +46,10 @@ class SinaAccessor(Accessor):
             e_df = e_df[0].iloc[:, [1, 2, 3, 5]]
             e_df.columns = ['Sg', 'Zg', 'Fh', 'Date']
             e_df[['Sg', 'Zg', 'Fh']] = e_df[['Sg', 'Zg', 'Fh']].astype(float).fillna(0) / 10
-            e_df['Date'] = pd.to_datetime(e_df['Date'], errors='coerce')
+            # getting the date type instead of datetime.datetime, refer to http://stackoverflow.com/a/34277514/4229125
+            e_df['Date'] = pd.to_datetime(e_df['Date'], errors='coerce').dt.date
             e_df.loc[:, 'Ps'] = e_df['Sg'] + e_df['Zg']
-            e_df = e_df[Const.fhps_col_names].set_index('Date', drop=False).sort_index()
+            e_df = e_df[constant.fhps_col_names].set_index('Date', drop=False).sort_index()
             e_df = e_df[e_start:e_end]
 
         if i_end:
@@ -70,7 +60,15 @@ class SinaAccessor(Accessor):
         return df
 
     def get_hq_full(self, code, start_date=None, end_date=None, retry_times=3):
-        i_start, i_end, e_start, e_end = dao_util.get_dates(code, self.data_source, start_date, end_date)
+        """
+        This method is too slow, by default it will not be used
+        :param code:
+        :param start_date:
+        :param end_date:
+        :param retry_times:
+        :return:
+        """
+        i_start, i_end, e_start, e_end = utility.get_dates(code, self.accessor_name, start_date, end_date)
         e_df = None
         i_df = None
         retry = 0
@@ -78,7 +76,7 @@ class SinaAccessor(Accessor):
 
         if e_start:
             while retry < retry_times:
-                with dao_util.open_phantomJS_driver() as driver:
+                with utility.open_phantomJS_driver() as driver:
                     try:
                         e_df_list = []
                         year_start = e_start.year
@@ -112,17 +110,17 @@ class SinaAccessor(Accessor):
                                 d_table = WebDriverWait(driver, 30).until(
                                     EC.presence_of_element_located((By.XPATH, self.hq_table_xpath)))
                                 cur_e_df = pd.read_html(d_table.get_attribute('outerHTML'), header=1)[0]
-                                cur_e_df.columns = Const.hq_col_names
-                                cur_e_df['Date'] = pd.to_datetime(cur_e_df['Date'], errors='coerce')
+                                cur_e_df.columns = constant.hq_col_names
+                                cur_e_df['Date'] = pd.to_datetime(cur_e_df['Date'], errors='coerce').dt.date
                                 for i in range(1, len(cur_e_df.columns)):
-                                    cur_e_df.iloc[:, i] = cur_e_df.iloc[:, i].astype(Const.hq_datatypes[i])
+                                    cur_e_df.iloc[:, i] = cur_e_df.iloc[:, i].astype(constant.hq_datatypes[i])
                                 cur_e_df = cur_e_df.set_index('Date', drop=False).sort_index()
                                 e_df_list.append(cur_e_df)
                         retry = retry_times + 1
                     except Exception:
                         retry += 1
             e_df = pd.concat(e_df_list).sort_index()
-            e_df = dao_util.clean_hq_df(e_df)
+            e_df = utility.clean_hq_df(e_df)
             e_df = e_df[e_start:e_end]
 
         if i_end:
@@ -133,11 +131,11 @@ class SinaAccessor(Accessor):
         return df
 
     def get_hq(self, code, start_date=None, end_date=None, retry_times=3):
-        i_start, i_end, e_start, e_end = dao_util.get_dates(code, self.data_source, start_date, end_date)
+        i_start, i_end, e_start, e_end = utility.get_dates(code, self.accessor_name, start_date, end_date)
         e_df = None
         i_df = None
         retry = 0
-        code = Const.code_map.get(code[0])+code
+        code = constant.code_map.get(code[0]) + code
 
         if e_start:
             while retry < retry_times:
@@ -155,15 +153,15 @@ class SinaAccessor(Accessor):
                             hq_cur['Volume'] = int(el.attrs['v'])
                             hq_cur['High'] = float(el.attrs['h'])
                             hq_cur['Low'] = float(el.attrs['l'])
-                            hq_cur['Date'] = date_parser.parse(el.attrs['d'])
+                            hq_cur['Date'] = date_parser.parse(el.attrs['d']).date()
                             record_list.append(hq_cur)
                         e_df = pd.DataFrame(record_list)
                         if len(e_df) != 0:
                             retry = retry_times + 1
                         e_df['Amount'] = np.NaN
-                        e_df = e_df[Const.hq_col_names]
+                        e_df = e_df[constant.hq_col_names]
                         e_df = e_df.set_index('Date', drop=False).sort_index()
-                        e_df = dao_util.clean_hq_df(e_df)
+                        e_df = utility.clean_hq_df(e_df)
                         e_df = e_df[e_start:e_end]
                 except Exception:
                     retry += 1

@@ -4,7 +4,6 @@ from abc import ABCMeta, abstractmethod
 
 
 class Accessor():
-
     __metaclass__ = ABCMeta
 
     @abstractmethod
@@ -38,12 +37,12 @@ class Accessor():
         """
         pass
 
-class InternalAccessor(Accessor):
 
+class InternalAccessor(Accessor):
     @abstractmethod
     def get_checkpoints(self, code, data_source):
         """
-        Returns the check points for the data_source, in order to avoid repeated download
+        Returns the check points for the accessor_name, in order to avoid repeated download
         :param code: string number code without pre/suffix, i.e. '600033'
         :param data_source: string for the source, e.g. 'sohu'
         :return: datetime If never checked, return datetime(1980, 1, 1) by default

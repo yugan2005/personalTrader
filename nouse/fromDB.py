@@ -4,7 +4,7 @@ import sys, os
 import pandas as pd
 from dateutil import parser as date_parser
 
-from Const import Const
+from dao.constant import DaoConstant
 
 
 def get_stock(code, fq, start_date=None, end_date=None):
@@ -16,13 +16,13 @@ def get_stock(code, fq, start_date=None, end_date=None):
     :return: a pandas dataframe dwm_ochlmk
     """
 
-    client = pymongo.MongoClient(host=Const.host, port=Const.port)
-    db = client[Const.db_name]
+    client = pymongo.MongoClient(host=DaoConstant.host, port=DaoConstant.port)
+    db = client[DaoConstant.db_name]
     collection = db[fq + '_' + code]
     if (not start_date) and (not end_date):
         return (pd.DataFrame(list(collection.find()))
                 .drop('_id', axis=1))
-    symbol = db[Const.sym_coll_name]
+    symbol = db[DaoConstant.sym_coll_name]
     cur_symbol = symbol.find_one({'code': code})
     start_date_db = cur_symbol['data_start']
     end_date_db = cur_symbol['data_end']
@@ -45,9 +45,9 @@ def get_stock_ori(code, fq, start_date=None, end_date=None):
     :return: a pandas dataframe index by 'Date' (sorted), with columns ['Open', 'High', 'Close', 'Low', 'Volume', 'Amount'].
     """
 
-    client = pymongo.MongoClient(host=Const.host, port=Const.port)
-    db = client[Const.db_name]
-    collection = db[Const.tdx_daily_coll_name + fq]
+    client = pymongo.MongoClient(host=DaoConstant.host, port=DaoConstant.port)
+    db = client[DaoConstant.db_name]
+    collection = db[DaoConstant.tdx_daily_coll_name + fq]
     ori_df = (pd.DataFrame(list(collection.find({'code': code}, {'code': 0, '_id': 0})))
               .set_index('Date')
               .sort_index())[['Open', 'High', 'Close', 'Low', 'Volume', 'Amount']]
@@ -65,16 +65,16 @@ def get_stock_ori(code, fq, start_date=None, end_date=None):
 
 
 def get_all_stock_info():
-    client = pymongo.MongoClient(host=Const.host, port=Const.port)
-    db = client[Const.db_name]
-    collection = db[Const.sym_coll_name]
+    client = pymongo.MongoClient(host=DaoConstant.host, port=DaoConstant.port)
+    db = client[DaoConstant.db_name]
+    collection = db[DaoConstant.sym_coll_name]
     stock_info = pd.DataFrame(list(collection.find())).drop('_id', axis=1)
     return stock_info
 
 
 def get_stock_info_pretty():
     stock_info = get_all_stock_info()
-    stock_info.columns = stock_info.columns.map(lambda name: name + ':' + Const.sym_coll_schema[name].decode('utf8'))
+    stock_info.columns = stock_info.columns.map(lambda name: name + ':' + DaoConstant.sym_coll_schema[name].decode('utf8'))
     return stock_info
 
 
@@ -86,9 +86,9 @@ def get_stock_open_dates(code, start_date=None, end_date=None):
     :param end_date: optional
     :return: Dataframe with sorted index of dates, and Column 'Date'
     """
-    client = pymongo.MongoClient(host=Const.host, port=Const.port)
-    db = client[Const.db_name]
-    coll = db[Const.tdx_daily_coll_name + 'bfq']
+    client = pymongo.MongoClient(host=DaoConstant.host, port=DaoConstant.port)
+    db = client[DaoConstant.db_name]
+    coll = db[DaoConstant.tdx_daily_coll_name + 'bfq']
     dates = pd.DataFrame(list(coll.find({'code': code}, {'Date': 1, '_id': 0})))
     dates = dates.set_index('Date', drop=False).sort_index()
     if start_date:
@@ -103,9 +103,9 @@ def from_code_get_yahoo_name(code):
     :param code: string number code without suffix like '600033'
     :return: string yahoo code name
     """
-    client = pymongo.MongoClient(host=Const.host, port=Const.port)
-    db = client[Const.db_name]
-    collection = db[Const.sym_coll_name]
+    client = pymongo.MongoClient(host=DaoConstant.host, port=DaoConstant.port)
+    db = client[DaoConstant.db_name]
+    collection = db[DaoConstant.sym_coll_name]
     ncode = collection.find_one({'code':code}, {'ncode':1, '_id':0})['ncode']
     return str(ncode)
 
@@ -114,9 +114,9 @@ def from_code_get_xueqiu_name(code):
     :param code: string number code without suffix like '600033'
     :return: string xueqiue name
     """
-    client = pymongo.MongoClient(host=Const.host, port=Const.port)
-    db = client[Const.db_name]
-    collection = db[Const.sym_coll_name]
+    client = pymongo.MongoClient(host=DaoConstant.host, port=DaoConstant.port)
+    db = client[DaoConstant.db_name]
+    collection = db[DaoConstant.sym_coll_name]
     TDXname = collection.find_one({'code':code}, {'TDXname':1, '_id':0})['TDXname']
     xueqiu_name = ''.join(TDXname.split('.')[0].split('#'))
     return str(xueqiu_name)

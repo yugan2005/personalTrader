@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 
-import urllib2
+import io
+import os
+import sys
+
 import pandas as pd
 import requests
 from dateutil import parser as date_parser
-import sys, os, io
 
 try:
-    from dao.Const import Const
-    from dao import fromDB
+    from dao.constant import DaoConstant
+    from nouse import fromDB
 except Exception:
     sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-    from Const import Const
-    from dao import fromDB
+    from dao.constant import DaoConstant
+    from dao.abstractAccessor import fromDB
 
 from pandas.io import html as pd_html
 from contextlib import contextmanager
@@ -55,7 +57,7 @@ def get_fhps(code):
     :return: DataFrame in form of ['Date', 'Fh', 'Ps'], sorted by 'Date', but no index / None
     """
     xueqiu_name = fromDB.from_code_get_xueqiu_name(code)
-    url = Const.xueqiu_fhps_url.format(xueqiu_name)
+    url = DaoConstant.xueqiu_fhps_url.format(xueqiu_name)
 
     try:
         with open_driver() as driver:
@@ -102,9 +104,9 @@ def get_stock(code, start_date=None, end_date=None):
     """
 
     with requests.Session() as s:
-        s.headers.update(Const.xueqiu_hdr)
+        s.headers.update(DaoConstant.xueqiu_hdr)
         xueqiu_name = fromDB.from_code_get_xueqiu_name(code)
-        r = s.get(Const.xueqiu_stock_url.format(xueqiu_name))
+        r = s.get(DaoConstant.xueqiu_stock_url.format(xueqiu_name))
         if r.status_code == 200:
             csv = r.content.decode('utf8')  # the decode is a must
             df = pd.read_csv(io.StringIO(csv), parse_dates=['date'], infer_datetime_format=True)

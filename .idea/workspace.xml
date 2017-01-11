@@ -2,27 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1aafbad3-fc0d-4b63-9f34-dce4aaf0fa9a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/Dao.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/DatabaseAccessor.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/SinaAccessor.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/SohuAccessor.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/dao_util.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/fromSohu.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/fromXueQiu.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/seleniumServer.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dao/util.py" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/personalTrader/dao/DatabaseAccessor.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/personalTrader/dao/DatabaseBuilder.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/personalTrader/dao/constant.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/personalTrader/indicators/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/personalTrader/strategies/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/personalTrader/tests/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/personalTrader/tests/test_dao/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/personalTrader/tests/test_dao/test_sohuAccessor.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dao/Const.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dao/DatabaseAccessor.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dao/fromSohu.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dao/seleniumServer.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/nohup" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/backtesting/__init__.py" afterPath="$PROJECT_DIR$/nouse/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/backtesting/recorder.py" afterPath="$PROJECT_DIR$/personalTrader/backtesting/recorder.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/backtesting/test.py" afterPath="$PROJECT_DIR$/personalTrader/backtesting/test.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/dao/Dao.py" afterPath="$PROJECT_DIR$/personalTrader/dao/abstractAccessor.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/dao/SinaAccessor.py" afterPath="$PROJECT_DIR$/personalTrader/dao/SinaAccessor.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/dao/SohuAccessor.py" afterPath="$PROJECT_DIR$/personalTrader/dao/SohuAccessor.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/dao/__init__.py" afterPath="$PROJECT_DIR$/personalTrader/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/dao/dao_util.py" afterPath="$PROJECT_DIR$/personalTrader/dao/utility.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/dao/fromDB.py" afterPath="$PROJECT_DIR$/nouse/fromDB.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/dao/fromTDX.py" afterPath="$PROJECT_DIR$/nouse/fromTDX.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/dao/fromXueQiu.py" afterPath="$PROJECT_DIR$/nouse/fromXueQiu.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/dao/toDB.py" afterPath="$PROJECT_DIR$/nouse/toDB.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/indicators/__init__.py" afterPath="$PROJECT_DIR$/personalTrader/backtesting/__init__.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/indicators/commonIndicator.py" afterPath="$PROJECT_DIR$/personalTrader/indicators/commonIndicator.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/scrapbook.ipynb" afterPath="$PROJECT_DIR$/personalTrader/resources/scrapbook.ipynb" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/tk.key" afterPath="$PROJECT_DIR$/personalTrader/indicators/tk.csv" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/strategies/Buyer.py" afterPath="$PROJECT_DIR$/personalTrader/strategies/Buyer.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/strategies/Seller.py" afterPath="$PROJECT_DIR$/personalTrader/strategies/Seller.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/strategies/__init__.py" afterPath="$PROJECT_DIR$/personalTrader/dao/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/personalTrader.iml" afterPath="$PROJECT_DIR$/.idea/personalTrader.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backtesting/recorder.py" afterPath="$PROJECT_DIR$/backtesting/recorder.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backtesting/test.py" afterPath="$PROJECT_DIR$/backtesting/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/Const.py" afterPath="$PROJECT_DIR$/dao/Const.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/fromDB.py" afterPath="$PROJECT_DIR$/dao/fromDB.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/fromTDX.py" afterPath="$PROJECT_DIR$/dao/fromTDX.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/toDB.py" afterPath="$PROJECT_DIR$/dao/toDB.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indicators/commonIndicator.py" afterPath="$PROJECT_DIR$/indicators/commonIndicator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nohup" afterPath="$PROJECT_DIR$/nohup" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/scrapbook.ipynb" afterPath="$PROJECT_DIR$/resources/scrapbook.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/tk.key" afterPath="$PROJECT_DIR$/resources/tk.key" />
     </list>
     <ignored mask="*.key" />
     <ignored mask="tk.csv" />
@@ -38,138 +52,99 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="toDB.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dao/toDB.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1428">
-                  <caret line="68" column="26" lean-forward="true" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
-                  <folding>
-                    <element signature="e#24#38#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="fromDB.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dao/fromDB.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="294">
-                  <caret line="14" column="29" lean-forward="true" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-                  <folding>
-                    <element signature="e#24#38#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="fromXueQiu.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dao/fromXueQiu.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="189">
-                  <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-                  <folding>
-                    <element signature="e#25#39#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="fromSohu.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dao/fromSohu.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#25#44#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="dao_util.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dao/dao_util.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="179">
-                  <caret line="157" column="50" lean-forward="true" selection-start-line="157" selection-start-column="50" selection-end-line="157" selection-end-column="50" />
-                  <folding>
-                    <element signature="e#105#122#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Dao.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dao/Dao.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1008">
-                  <caret line="48" column="82" lean-forward="true" selection-start-line="48" selection-start-column="82" selection-end-line="48" selection-end-column="82" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="DatabaseAccessor.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dao/DatabaseAccessor.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="567">
-                  <caret line="27" column="39" lean-forward="false" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="39" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SinaAccessor.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/dao/SinaAccessor.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="410">
-                  <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#24#35#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="Const.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/dao/Const.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="515">
-                  <caret line="69" column="36" lean-forward="false" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
-                  <folding>
-                    <element signature="e#24#33#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SohuAccessor.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/dao/SohuAccessor.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="453">
-                  <caret line="124" column="38" lean-forward="true" selection-start-line="124" selection-start-column="38" selection-end-line="124" selection-end-column="38" />
-                  <folding>
-                    <element signature="e#24#35#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="SohuAccessor.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/personalTrader/dao/SohuAccessor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="124" column="49" lean-forward="false" selection-start-line="124" selection-start-column="49" selection-end-line="124" selection-end-column="49" />
+              <folding>
+                <element signature="e#24#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_sohuAccessor.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/personalTrader/tests/test_dao/test_sohuAccessor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="38" column="52" lean-forward="true" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
+              <folding>
+                <element signature="e#25#54#0" expanded="true" />
+                <element signature="e#704#2057#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="constant.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/personalTrader/dao/constant.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="61" column="36" lean-forward="false" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
+              <folding>
+                <element signature="e#24#33#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseAccessor.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/personalTrader/dao/DatabaseAccessor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="17" column="35" lean-forward="false" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+              <folding>
+                <element signature="e#25#70#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utility.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/personalTrader/dao/utility.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1911">
+              <caret line="91" column="4" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="4" />
+              <folding>
+                <element signature="e#105#122#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseBuilder.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/personalTrader/dao/DatabaseBuilder.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding>
+                <element signature="e#24#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SinaAccessor.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/personalTrader/dao/SinaAccessor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3318">
+              <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+              <folding>
+                <element signature="e#24#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Python Unit Test" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -183,6 +158,7 @@
       <find>sohu</find>
       <find>Sohu</find>
       <find>date_parser</find>
+      <find>DaoConstant</find>
     </findStrings>
     <replaceStrings>
       <replace>df</replace>
@@ -192,6 +168,7 @@
       <replace>end</replace>
       <replace>sina</replace>
       <replace>Sina</replace>
+      <replace>constant</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -225,21 +202,36 @@
         <option value="$PROJECT_DIR$/dao/SohuAccessorTest.py" />
         <option value="$PROJECT_DIR$/dao/fromDB.py" />
         <option value="$PROJECT_DIR$/dao/util.py" />
-        <option value="$PROJECT_DIR$/dao/DatabaseAccessor.py" />
         <option value="$PROJECT_DIR$/dao/Dao.py" />
-        <option value="$PROJECT_DIR$/dao/dao_util.py" />
         <option value="$PROJECT_DIR$/dao/Const.py" />
-        <option value="$PROJECT_DIR$/dao/SohuAccessor.py" />
+        <option value="$PROJECT_DIR$/mongoDB/MongoConst.py" />
+        <option value="$PROJECT_DIR$/dao/DatabaseAccessor.py" />
+        <option value="$PROJECT_DIR$/dao/DatabaseBuilder.py" />
+        <option value="$PROJECT_DIR$/dao/dao_util.py" />
         <option value="$PROJECT_DIR$/dao/SinaAccessor.py" />
+        <option value="$PROJECT_DIR$/nouse/toDB.py" />
+        <option value="$PROJECT_DIR$/dao/DaoConst.py" />
+        <option value="$PROJECT_DIR$/dao/SohuAccessor.py" />
+        <option value="$PROJECT_DIR$/tests/dao/test_sohuAccessor.py" />
+        <option value="$PROJECT_DIR$/personalTrader/dao/abstractAccessor.py" />
+        <option value="$PROJECT_DIR$/personalTrader/dao/phantomjsdriver.log" />
+        <option value="$PROJECT_DIR$/selenium_server_log/log" />
+        <option value="$PROJECT_DIR$/personalTrader/dao/SinaAccessor.py" />
+        <option value="$PROJECT_DIR$/personalTrader/dao/DatabaseBuilder.py" />
+        <option value="$PROJECT_DIR$/personalTrader/dao/DatabaseAccessor.py" />
+        <option value="$PROJECT_DIR$/personalTrader/dao/SohuAccessor.py" />
+        <option value="$PROJECT_DIR$/personalTrader/dao/utility.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/personalTrader/tests/dao/test_sohuAccessor.py" />
+        <option value="$PROJECT_DIR$/personalTrader/tests/test_dao/test_sohuAccessor.py" />
+        <option value="$PROJECT_DIR$/personalTrader/dao/constant.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-2560" />
-    <option name="y" value="-517" />
-    <option name="width" value="2560" />
-    <option name="height" value="1413" />
+    <option name="y" value="23" />
+    <option name="width" value="1920" />
+    <option name="height" value="1173" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -285,7 +277,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="strategies" />
+              <option name="myItemId" value="personalTrader" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -293,6 +285,50 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="personalTrader" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="personalTrader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="personalTrader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="personalTrader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="personalTrader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="personalTrader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test_dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="personalTrader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="personalTrader" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="personalTrader" />
@@ -313,16 +349,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="indicators" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="personalTrader" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="personalTrader" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -331,120 +357,133 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="personalTrader" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="personalTrader" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="backtesting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.updates" />
     <property name="prop_add_unversioned_files" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/dao" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/personalTrader" />
+      <recent name="$PROJECT_DIR$/nouse" />
+      <recent name="$PROJECT_DIR$/resources" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.SinaAccessor">
-    <configuration default="false" name="fromXueQiu" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python tests.Unittests in tests">
+    <configuration default="false" name="Unittest TestSohuAccessor.test_get_hq" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dao" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/personalTrader/tests/test_dao" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="personalTrader" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dao/fromXueQiu.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/personalTrader/tests/test_dao/test_sohuAccessor.py" />
+      <option name="CLASS_NAME" value="TestSohuAccessor" />
+      <option name="METHOD_NAME" value="test_get_hq" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="fromDB" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Unittests in TestSohuAccessor (3)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dao" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/personalTrader/tests/test_dao" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="personalTrader" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dao/fromDB.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/personalTrader/tests/test_dao/test_sohuAccessor.py" />
+      <option name="CLASS_NAME" value="TestSohuAccessor" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="fromSohu" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Unittests in TestSohuAccessor (4)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dao" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/personalTrader/tests/test_dao" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="personalTrader" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dao/fromSohu.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/personalTrader/tests/test_dao/test_sohuAccessor.py" />
+      <option name="CLASS_NAME" value="TestSohuAccessor" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="SohuAccessor" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Unittests in TestSohuAccessor (1)" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dao" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/personalTrader/tests/test_dao" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="personalTrader" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dao/SohuAccessor.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/personalTrader/tests/test_dao/test_sohuAccessor.py" />
+      <option name="CLASS_NAME" value="TestSohuAccessor" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="SinaAccessor" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Unittests in tests" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
+      <envs />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dao" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/personalTrader/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="personalTrader" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dao/SinaAccessor.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="$PROJECT_DIR$/personalTrader/tests" />
+      <option name="TEST_TYPE" value="TEST_FOLDER" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
@@ -582,19 +621,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.fromXueQiu" />
-      <item index="1" class="java.lang.String" itemvalue="Python.fromDB" />
-      <item index="2" class="java.lang.String" itemvalue="Python.fromSohu" />
-      <item index="3" class="java.lang.String" itemvalue="Python.SohuAccessor" />
-      <item index="4" class="java.lang.String" itemvalue="Python.SinaAccessor" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TestSohuAccessor.test_get_hq" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in TestSohuAccessor (3)" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in TestSohuAccessor (4)" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestSohuAccessor (1)" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.SinaAccessor" />
-        <item index="1" class="java.lang.String" itemvalue="Python.SohuAccessor" />
-        <item index="2" class="java.lang.String" itemvalue="Python.fromSohu" />
-        <item index="3" class="java.lang.String" itemvalue="Python.fromXueQiu" />
-        <item index="4" class="java.lang.String" itemvalue="Python.fromDB" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in tests" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestSohuAccessor.test_get_hq" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in TestSohuAccessor (1)" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in TestSohuAccessor (4)" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in TestSohuAccessor (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -623,24 +662,63 @@
       <option name="project" value="LOCAL" />
       <updated>1482193116386</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Redesign the dao module to make the external source API more flexible">
+      <created>1483770919826</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1483770919826</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="Unittest_TestSohuAccessor_test_get_hq - 2017.01.11 at 00h 14m 12s.xml">
+      <configuration name="Unittest TestSohuAccessor.test_get_hq" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_TestSohuAccessor_test_get_hq - 2017.01.11 at 00h 19m 42s.xml">
+      <configuration name="Unittest TestSohuAccessor.test_get_hq" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_TestSohuAccessor_test_get_hq - 2017.01.11 at 00h 20m 49s.xml">
+      <configuration name="Unittest TestSohuAccessor.test_get_hq" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_TestSohuAccessor_test_get_hq - 2017.01.11 at 00h 21m 36s.xml">
+      <configuration name="Unittest TestSohuAccessor.test_get_hq" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_TestSohuAccessor - 2017.01.11 at 00h 12m 04s.xml">
+      <configuration name="Unittests in TestSohuAccessor" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_TestSohuAccessor_(1) - 2017.01.11 at 00h 21m 06s.xml">
+      <configuration name="Unittests in TestSohuAccessor (1)" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_TestSohuAccessor_(2) - 2017.01.11 at 00h 14m 43s.xml">
+      <configuration name="Unittests in TestSohuAccessor (2)" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_TestSohuAccessor_(3) - 2017.01.11 at 00h 19m 48s.xml">
+      <configuration name="Unittests in TestSohuAccessor (3)" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_TestSohuAccessor_(4) - 2017.01.11 at 00h 19m 57s.xml">
+      <configuration name="Unittests in TestSohuAccessor (4)" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_tests - 2017.01.11 at 00h 22m 20s.xml">
+      <configuration name="Unittests in tests" configurationId="tests" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-2560" y="-517" width="2560" height="1413" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="23" width="1920" height="1173" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.07443876" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16956292" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4012112" sideWeight="0.5013785" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32778198" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329296" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4943005" sideWeight="0.4986215" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4034822" sideWeight="0.4986215" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32747456" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32839963" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4921369" sideWeight="0.4986215" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45790935" sideWeight="0.4986215" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3951552" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39130434" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -694,7 +772,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implemented a ideal strategy and one custom strategy. Tested. Still has a unicode bug" />
     <MESSAGE value="Added random sampling on the testing module" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added random sampling on the testing module" />
+    <MESSAGE value="Redesign the dao module to make the external source API more flexible" />
+    <option name="LAST_COMMIT_MESSAGE" value="Redesign the dao module to make the external source API more flexible" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -705,102 +784,55 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="23" />
+      <option name="time" value="35" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="tests">
+        <watch expression="(hq_accessor - hq_from_yahoo).Close.abs().idxmax()" language="Python" />
+        <watch expression="(hq_accessor-hq_from_yahoo).max()" language="Python" />
+        <watch expression="len(hq_from_yahoo) - len(hq_accessor)" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/backtesting/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/fromDB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda2/envs/bktrader/lib/python2.7/site-packages/pymongo/collection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3486">
-          <caret line="166" column="0" lean-forward="false" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32802">
-          <caret line="1597" column="28" lean-forward="false" selection-start-line="1597" selection-start-column="28" selection-end-line="1597" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/datacleaner.py" />
-    <entry file="file://$PROJECT_DIR$/indicators/commonIndicator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/fromDB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backtesting/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/dao_util.py">
+    <entry file="file://$PROJECT_DIR$/personalTrader/dao/utility.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1785">
           <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#105#122#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/toDB.py">
+    <entry file="file://$PROJECT_DIR$/nouse/toDB.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/toDB.py">
+    <entry file="file://$PROJECT_DIR$/nouse/toDB.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="903">
           <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/fromDB.py">
+    <entry file="file://$PROJECT_DIR$/nouse/fromDB.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/dao_util.py">
+    <entry file="file://$PROJECT_DIR$/personalTrader/dao/utility.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1617">
           <caret line="77" column="20" lean-forward="true" selection-start-line="77" selection-start-column="20" selection-end-line="77" selection-end-column="20" />
-          <folding />
+          <folding>
+            <element signature="e#105#122#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -812,7 +844,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/__init__.py">
+    <entry file="file://$PROJECT_DIR$/personalTrader/dao/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -846,7 +878,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="653" column="8" lean-forward="false" selection-start-line="653" selection-start-column="8" selection-end-line="653" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -854,11 +885,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-570">
           <caret line="688" column="0" lean-forward="true" selection-start-line="688" selection-start-column="0" selection-end-line="688" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/strategies/Seller.py">
+    <entry file="file://$PROJECT_DIR$/personalTrader/strategies/Seller.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="30" column="76" lean-forward="false" selection-start-line="30" selection-start-column="76" selection-end-line="30" selection-end-column="76" />
@@ -866,44 +896,33 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dao/datacleaner.py" />
-    <entry file="file://$PROJECT_DIR$/resources/tk.csv" />
-    <entry file="file://$PROJECT_DIR$/resources/tk.key">
+    <entry file="file://$PROJECT_DIR$/personalTrader/resources/tk.csv" />
+    <entry file="file://$PROJECT_DIR$/personalTrader/resources/tk.key">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="64" lean-forward="false" selection-start-line="0" selection-start-column="64" selection-end-line="0" selection-end-column="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/tk.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backtesting/test.py">
+    <entry file="file://$PROJECT_DIR$/personalTrader/dao/tk.csv" />
+    <entry file="file://$PROJECT_DIR$/personalTrader/backtesting/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/indicators/commonIndicator.py">
+    <entry file="file://$PROJECT_DIR$/personalTrader/indicators/commonIndicator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backtesting/recorder.py">
+    <entry file="file://$PROJECT_DIR$/personalTrader/backtesting/recorder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
-          <folding>
-            <element signature="e#25#52#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -911,7 +930,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -919,170 +937,163 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/geckodriver.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-54761">
-          <caret line="16" column="66" lean-forward="false" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/seleniumServer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#17#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/phantomjsdriver.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/fromYahoo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="903">
-          <caret line="45" column="49" lean-forward="true" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/fromTDX.py">
+    <entry file="file://$PROJECT_DIR$/personalTrader/dao/geckodriver.log" />
+    <entry file="file://$PROJECT_DIR$/dao/fromYahoo.py" />
+    <entry file="file://$PROJECT_DIR$/nouse/fromTDX.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1029">
           <caret line="53" column="44" lean-forward="false" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/strategies/Buyer.py">
+    <entry file="file://$PROJECT_DIR$/personalTrader/strategies/Buyer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/SohuAccessorTest.py" />
+    <entry file="file://$PROJECT_DIR$/dao/fromSohu.py" />
+    <entry file="file://$PROJECT_DIR$/dao/seleniumServer.py" />
+    <entry file="file://$PROJECT_DIR$/nouse/fromXueQiu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/personalTrader/mongoDB/MongoConst.py" />
+    <entry file="file://$PROJECT_DIR$/nouse/fromDB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nouse/toDB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="38" column="25" lean-forward="false" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2016.3/python_stubs/-1713696013/datetime.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="182" column="8" lean-forward="false" selection-start-line="182" selection-start-column="8" selection-end-line="182" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/phantomjsdriver.log" />
+    <entry file="file://$PROJECT_DIR$/personalTrader/dao/phantomjsdriver.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="20" column="105" lean-forward="false" selection-start-line="20" selection-start-column="105" selection-end-line="20" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/selenium_server_log/log" />
+    <entry file="file://$PROJECT_DIR$/personalTrader/dao/selenium_server_log.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="13" column="79" lean-forward="false" selection-start-line="13" selection-start-column="79" selection-end-line="13" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/personalTrader/dao/abstractAccessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="633">
+          <caret line="35" column="65" lean-forward="false" selection-start-line="35" selection-start-column="65" selection-end-line="35" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/personalTrader/dao/SinaAccessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3318">
+          <caret line="171" column="0" lean-forward="false" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
           <folding>
-            <element signature="e#0#39#0" expanded="false" />
+            <element signature="e#24#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/fromDB.py">
+    <entry file="file://$PROJECT_DIR$/personalTrader/dao/DatabaseBuilder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="29" lean-forward="true" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        <state relative-caret-position="105">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
             <element signature="e#24#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/fromXueQiu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          <folding>
-            <element signature="e#25#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/SohuAccessorTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="36" lean-forward="true" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/toDB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="68" column="26" lean-forward="true" selection-start-line="68" selection-start-column="26" selection-end-line="68" selection-end-column="26" />
-          <folding>
-            <element signature="e#24#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/dao_util.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="157" column="50" lean-forward="true" selection-start-line="157" selection-start-column="50" selection-end-line="157" selection-end-column="50" />
-          <folding>
-            <element signature="e#105#122#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/Dao.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1008">
-          <caret line="48" column="82" lean-forward="true" selection-start-line="48" selection-start-column="82" selection-end-line="48" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/fromSohu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#25#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/DatabaseAccessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="27" column="39" lean-forward="false" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/Const.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="69" column="36" lean-forward="false" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
-          <folding>
-            <element signature="e#24#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/SohuAccessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="124" column="38" lean-forward="true" selection-start-line="124" selection-start-column="38" selection-end-line="124" selection-end-column="38" />
-          <folding>
-            <element signature="e#24#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+        <state relative-caret-position="558">
+          <caret line="97" column="47" lean-forward="true" selection-start-line="97" selection-start-column="47" selection-end-line="97" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/SinaAccessor.py">
+    <entry file="file://$PROJECT_DIR$/personalTrader/dao/SohuAccessor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+        <state relative-caret-position="248">
+          <caret line="124" column="49" lean-forward="false" selection-start-line="124" selection-start-column="49" selection-end-line="124" selection-end-column="49" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/personalTrader/dao/DatabaseAccessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="35" lean-forward="false" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+          <folding>
+            <element signature="e#25#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/personalTrader/dao/utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1911">
+          <caret line="91" column="4" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="4" />
+          <folding>
+            <element signature="e#105#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda2/envs/bktrader/lib/python2.7/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="319" column="0" lean-forward="false" selection-start-line="319" selection-start-column="0" selection-end-line="319" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/personalTrader/tests/test_dao/test_sohuAccessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="38" column="52" lean-forward="true" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
+          <folding>
+            <element signature="e#25#54#0" expanded="true" />
+            <element signature="e#704#2057#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/personalTrader/dao/constant.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="61" column="36" lean-forward="false" selection-start-line="61" selection-start-column="36" selection-end-line="61" selection-end-column="36" />
+          <folding>
+            <element signature="e#24#33#0" expanded="true" />
           </folding>
         </state>
       </provider>

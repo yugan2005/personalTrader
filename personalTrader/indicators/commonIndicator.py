@@ -105,7 +105,7 @@ def get_dwm_ochlmk(tdx_df):
 
 
 def main():
-    from dao import fromTDX
+    from nouse import fromTDX
     stock_info = fromTDX.get_all_stock_info()
     tdx_df = fromTDX.get_stock(stock_info.loc['600033', 'TDXname'], 'bfq')
     df = get_dwm_ochlmk(tdx_df)
